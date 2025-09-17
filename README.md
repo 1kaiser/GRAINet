@@ -1,5 +1,8 @@
 # GRAINet: Mapping grain size distributions in river beds from UAV images with convolutional neural networks
 
+<a href="https://colab.research.google.com/github/1kaiser/GRAINet/blob/main/GRAINet_ViT_comparison.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+     
+
 This is a demonstration to show how to run the training and testing code used to analyze the grain size distributions in river beds over entire gravel bars ([Lang et al., 2020]( https://doi.org/10.5194/hess-2020-196)).
 
 Along with the code, we release a small subset of the dataset used in the study, which is a single gravel bar (orthophoto) with 212 manually annotated image tiles. The full dataset cannot be published for commercial reasons, as it is owned by a private company (who also created it at their own cost).
