@@ -52,6 +52,22 @@ opposite of CTM's own curves, because the output head was only ever
 trained on the last layer's features. Full discussion and plots in
 [test2026's Section 8](https://github.com/1kaiser/test2026/tree/main/grainet_tryout#section-8-ctm-inspired-analysis--attention-and-certainty-over-depth).
 
+**GPU training, quantized LiteRT, and an animated GIF** (latest update):
+found a real gap — the notebook's own committed `_executed.ipynb` had
+only ever run 13 of its cells (stale, from before the sections above
+existed), so the 21-combo sweep and CTM analysis had only ever been
+verified via separate scratch scripts. Fixed with the first true
+end-to-end run: training moved to GPU, LiteRT conversion isolated into
+its own CPU subprocess (a real cross-environment serialization-version
+mismatch, not fixable by a config flag), plus a fixed missing `cv2`
+import and two release-verification bugs (a hard assert that doesn't
+account for cross-run training non-determinism, and a msgpack-clobbering
+download path). Added dynamic-range + full-integer LiteRT quantization
+(dynamic-range wins clearly: 2.7x smaller, 1.8x faster, <0.01cm error)
+and a CTM-style animated GIF (one frame per layer: attention overlay +
+accumulating histogram prediction + certainty score). Full writeup:
+[test2026's Performance section](https://github.com/1kaiser/test2026/tree/main/grainet_tryout#performance).
+
 
 ## Getting Started
 
