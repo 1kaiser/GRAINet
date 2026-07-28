@@ -65,7 +65,12 @@ account for cross-run training non-determinism, and a msgpack-clobbering
 download path). Added dynamic-range + full-integer LiteRT quantization
 (dynamic-range wins clearly: 2.7x smaller, 1.8x faster, <0.01cm error)
 and a CTM-style animated GIF (one frame per layer: attention overlay +
-accumulating histogram prediction + certainty score). Full writeup:
+accumulating histogram prediction + certainty score) — as standalone,
+portable scripts in this repo: `litert_quantization.py` (float32 +
+dynamic-range + full-integer conversion, each verified against the live
+JAX model) and `ctm_gif.py` (needs a msgpack trained with
+`output_scalar=False, bins=21`, i.e. the full-histogram model from the
+3-model x 7-loss comparison, not the scalar-`dm` model). Full writeup:
 [test2026's Performance section](https://github.com/1kaiser/test2026/tree/main/grainet_tryout#performance).
 
 
