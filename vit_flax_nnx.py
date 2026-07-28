@@ -194,10 +194,10 @@ class ViTTiny_STRING2D_Cayley_Flax(nnx.Module):
         )
 
         # Transformer layers
-        self.transformer_blocks = [
+        self.transformer_blocks = nnx.List([
             TransformerBlock(embed_dim, num_heads, mlp_dim, dropout_rate, rngs=rngs)
             for _ in range(num_layers)
-        ]
+        ])
 
         # Final layer normalization
         self.final_norm = nnx.LayerNorm(embed_dim, rngs=rngs)

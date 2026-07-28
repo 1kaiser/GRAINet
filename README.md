@@ -9,6 +9,21 @@ Along with the code, we release a small subset of the dataset used in the study,
 
 **Important note**: The trained model resulting from this demo will not generalize as described in the paper.
 
+**On-device / in-browser deployment**: the ViT-Tiny (`vit_flax_nnx.py`)
+model has been trained, converted to LiteRT (`.tflite`) via `jax2tf`, and
+verified end-to-end (correlation 0.99999965 vs. JAX on every real test
+tile), including a self-contained single-page web demo running the model
+directly in-browser via LiteRT.js. It's also grounded in standard
+[soil gradation](https://en.wikipedia.org/wiki/Soil_gradation) theory
+(D10/D30/D60, Cu, Cc, USCS classification), computed from this repo's own
+real demo-dataset gradation curves — including a genuine, non-obvious
+finding that `dm` (Fehr 1987) is not the same metric as the more familiar
+D50. Full writeup, notebook, and web demo:
+[1kaiser/test2026/grainet_tryout](https://github.com/1kaiser/test2026/tree/main/grainet_tryout)
+(6 real version-drift/conversion bugs found and fixed along the way, one
+of them — `nnx.List` for module lists — already applied to
+`vit_flax_nnx.py` in this repo).
+
 
 ## Getting Started
 
