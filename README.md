@@ -42,6 +42,16 @@ unstable on imperfect predictions (a 0.01 L1 perturbation can swing it by
 30+ cm) — full tables, plots, and discussion in the
 [test2026 writeup](https://github.com/1kaiser/test2026/tree/main/grainet_tryout#section-7-3-model-x-7-loss-comparison-matching-the-original-papers-methodology).
 
+**CTM-inspired attention/certainty analysis**: adapted plotting ideas from
+[SakanaAI's Continuous Thought Machine](https://github.com/SakanaAI/continuous-thought-machines)
+(per-tick attention overlays, a certainty-over-time curve) to this ViT's
+layer depth as the natural analog of CTM's internal "tick" axis. Real
+finding: attention starts sparse/localized and spreads by the final
+layer, while early-exit certainty genuinely *decreases* with depth — the
+opposite of CTM's own curves, because the output head was only ever
+trained on the last layer's features. Full discussion and plots in
+[test2026's Section 8](https://github.com/1kaiser/test2026/tree/main/grainet_tryout#section-8-ctm-inspired-analysis--attention-and-certainty-over-depth).
+
 
 ## Getting Started
 
