@@ -24,6 +24,24 @@ D50. Full writeup, notebook, and web demo:
 of them — `nnx.List` for module lists — already applied to
 `vit_flax_nnx.py` in this repo).
 
+**3-model x 7-loss comparison** (added alongside): `vit_plain_flax_nnx.py`
+(a plain ViT-Tiny with standard positional encoding, built as an ablation
+against the Cayley-STRING encoding), `resnet_architecture_flax_nnx.py` (a
+JAX/Flax NNX port of this repo's own `resnet_architecture.py`),
+`loss_functions_jax.py` (JAX ports of all 5 losses in
+`loss_functions.py` — KL/reverse-KL/JSD, EMD, volume-weighted MAE/MSE —
+plus plain MSE), and `helper_jax.py` (JAX-compatible CDF→PDF conversion
+and an exact port of `helper.py::get_dm`, verified bit-exact against this
+repo's own stored `dm` on real ground-truth data). Real, verified
+findings from training all 21 combinations: plain MSE is the worst loss
+for every model; ResNet/FCN wins on quality despite training 6-7x slower
+per step on GPU than either ViT; **both ViT variants show a genuine mode
+collapse** (near-identical predictions across all test tiles) on this
+212-tile dataset; and `get_dm`'s Fuller-curve derivation is itself
+unstable on imperfect predictions (a 0.01 L1 perturbation can swing it by
+30+ cm) — full tables, plots, and discussion in the
+[test2026 writeup](https://github.com/1kaiser/test2026/tree/main/grainet_tryout#section-7-3-model-x-7-loss-comparison-matching-the-original-papers-methodology).
+
 
 ## Getting Started
 
